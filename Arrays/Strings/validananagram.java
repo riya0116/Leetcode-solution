@@ -1,0 +1,31 @@
+// Frequency Count / Hashing Pattern
+//⏱️ Time Complexity (TC)
+
+//👉 O(n)
+
+//One loop → n
+////One check → 26 (constant)
+//💾 Space Complexity (SC)
+
+//👉 O(1)
+
+
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        
+        if (s.length() != t.length()) return false;
+
+        int[] count = new int[26];
+
+        for (int i = 0; i < s.length(); i++) {
+            count[s.charAt(i) - 'a']++;
+            count[t.charAt(i) - 'a']--;
+        }
+
+        for (int c : count) {
+            if (c != 0) return false;
+        }
+
+        return true;
+    }
+}
